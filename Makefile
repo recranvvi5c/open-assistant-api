@@ -1,4 +1,4 @@
-.PHONY: all format lint
+.PHONY: all format lint test
 
 all: help
 
@@ -17,3 +17,6 @@ format:
 lint:
 	poetry run black . --check
 	poetry run ruff .
+
+test:
+	python -m pytest tests/safe_access_test.py -q

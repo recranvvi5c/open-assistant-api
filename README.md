@@ -165,3 +165,11 @@ Please read our [contribution document](./docs/CONTRIBUTING.md) to learn how to 
 ## Open Source License
 
 This repository follows the MIT open source license. For more information, please see the [LICENSE](./LICENSE) file.
+
+## Development
+
+See [docs/development.md](docs/development.md) for the local setup and the test target.
+
+## Development
+
+See [docs/development.md](docs/development.md) for the local setup and the test target.

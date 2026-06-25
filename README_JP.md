@@ -155,3 +155,7 @@ OpenAPI/Swagger 仕様に従って、さまざまなツールをアシスタン�
 ## オープンソースライセンス
 
 このリポジトリは MIT オープンソースライセンスに従います。詳細については、[LICENSE](./LICENSE) ファイルを参照してください。
+
+Development: see [docs/development.md](docs/development.md).
+
+Development: see [docs/development.md](docs/development.md).

@@ -161,3 +161,7 @@ python examples/run_assistant.py
 ## 开源协议
 
 本仓库遵循 MIT 开源协议。有关详细信息，请参阅 [LICENSE](./LICENSE) 文件。
+
+Development: see [docs/development.md](docs/development.md).
+
+Development: see [docs/development.md](docs/development.md).

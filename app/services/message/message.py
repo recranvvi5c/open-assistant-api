@@ -9,6 +9,7 @@ from app.exceptions.exception import ResourceNotFoundError
 from app.models import MessageFile
 from app.models.message import Message, MessageCreate, MessageUpdate
 from app.services.thread.thread import ThreadService
+from app.utils.safe_access import vector_store_file_ids
 
 
 class MessageService:
@@ -58,7 +59,7 @@ class MessageService:
         if body_file_ids:
             thread_file_ids = []
             if thread.tool_resources and "file_search" in thread.tool_resources:
-                thread_file_ids = thread.tool_resources.get("file_search").get("vector_stores")[0].get("file_ids")
+                thread_file_ids = vector_store_file_ids(thread.tool_resources)
             for file_id in body_file_ids:
                 if file_id not in thread_file_ids:
                     thread_file_ids.append(file_id)
@@ -68,7 +69,7 @@ class MessageService:
                     thread.tool_resources = {}
                 if "file_search" not in thread.tool_resources:
                     thread.tool_resources["file_search"] = {"vector_stores": [{"file_ids": []}]}
-                thread.tool_resources.get("file_search").get("vector_stores")[0]["file_ids"] = thread_file_ids
+                thread.tool_resources["file_search"]["vector_stores"][0]["file_ids"] = thread_file_ids
                 session.add(thread)
 
         content = MessageService.format_message_content(body)

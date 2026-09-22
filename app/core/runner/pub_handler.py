@@ -1,3 +1,6 @@
+import logging
+
+logger = logging.getLogger(__name__)
 from datetime import datetime
 from typing import List, Tuple, Optional
 from fastapi import Request
@@ -6,6 +9,7 @@ from openai.types.beta import assistant_stream_event as events
 
 from app.exceptions.exception import ResourceNotFoundError, InternalServerError
 from app.providers.database import redis_client
+from app.utils.safe_access import is_stream_entry
 
 """
 LLM chat message event pub/sub handler
@@ -44,8 +48,11 @@ def read_event(channel: str, x_index: str = None) -> Tuple[Optional[str], Option
     if not data:
         return None, None
 
-    stream_id = data[0][1][0][0]
-    event = data[0][1][0][1]
+    entry = data[0][1][0] if data and len(data[0]) > 1 and data[0][1] else None
+    if not is_stream_entry(entry):
+        logger.warning("discarding a malformed stream entry on %s", channel)
+        return None, None
+    stream_id, event = entry
     return stream_id, event
 
 

@@ -14,6 +14,7 @@ from app.services.assistant.assistant import AssistantService
 from app.services.message.message import MessageService
 from app.services.thread.thread import ThreadService
 from app.utils import revise_tool_names
+from app.utils.safe_access import vector_store_file_ids
 
 
 class RunService:
@@ -43,7 +44,7 @@ class RunService:
         file_ids = []
         asst_file_ids = db_asst.file_ids
         if db_asst.tool_resources and "file_search" in db_asst.tool_resources:
-            asst_file_ids = db_asst.tool_resources.get("file_search").get("vector_stores")[0].get("file_ids")
+            asst_file_ids = vector_store_file_ids(db_asst.tool_resources)
         if asst_file_ids:
             file_ids += asst_file_ids
 
@@ -54,7 +55,7 @@ class RunService:
             file_search_tool = {"type": "file_search"}
             if file_search_tool not in body.tools:
                 body.tools.append(file_search_tool)
-            thread_file_ids = db_thread.tool_resources.get("file_search").get("vector_stores")[0].get("file_ids")
+            thread_file_ids = vector_store_file_ids(db_thread.tool_resources)
         if thread_file_ids:
             file_ids += thread_file_ids
 
@@ -106,7 +107,7 @@ class RunService:
         file_ids = []
         asst_file_ids = db_asst.file_ids
         if db_asst.tool_resources and "file_search" in db_asst.tool_resources:
-            asst_file_ids = db_asst.tool_resources.get("file_search").get("vector_stores")[0].get("file_ids")
+            asst_file_ids = vector_store_file_ids(db_asst.tool_resources)
         if asst_file_ids:
             file_ids += asst_file_ids
 
@@ -117,7 +118,7 @@ class RunService:
             thread_id = db_thread.id
             thread_file_ids = []
             if db_thread.tool_resources and "file_search" in db_thread.tool_resources:
-                thread_file_ids = db_thread.tool_resources.get("file_search").get("vector_stores")[0].get("file_ids")
+                thread_file_ids = vector_store_file_ids(db_thread.tool_resources)
             if thread_file_ids:
                 file_ids += thread_file_ids
         if body.model is None and db_asst.model is not None:

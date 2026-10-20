@@ -1,3 +1,5 @@
+"""Celery worker entry point: registers logging and exposes `celery_app` for the CLI."""
+
 from celery.signals import after_setup_logger
 
 from app.providers import logging_provider

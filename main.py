@@ -1,3 +1,5 @@
+"""ASGI entry point: builds the FastAPI app and registers the providers."""
+
 import logging
 
 from fastapi import FastAPI

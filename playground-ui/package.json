@@ -29,7 +29,7 @@
     "ytt": "ytt"
   },
   "dependencies": {
-    "@ant-design/icons": "^5.2.6",
+    "@ant-design/icons": "^6.3.4",
     "@ant-design/pro-components": "^2.6.18",
     "@ant-design/pro-layout": "^7.16.13",
     "@types/lodash": "^4.14.202",

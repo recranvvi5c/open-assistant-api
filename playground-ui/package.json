@@ -47,7 +47,7 @@
     "react-markdown": "^9.0.1",
     "react-syntax-highlighter": "^15.5.0",
     "rehype-raw": "^7.0.0",
-    "remark-gfm": "^4.0.0",
+    "remark-gfm": "^4.0.1",
     "stylelint": "^14.0.0",
     "stylelint-config-css-modules": "^2.3.0",
     "stylelint-config-prettier": "^9.0.3",

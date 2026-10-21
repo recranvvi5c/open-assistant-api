@@ -54,7 +54,7 @@
     "yet-another-abortcontroller-polyfill": "^0.0.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "^15.0.0",
+    "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^15.0.0",
     "@types/compression-webpack-plugin": "^6.0.6",
     "@types/react": "^17.0.0",
